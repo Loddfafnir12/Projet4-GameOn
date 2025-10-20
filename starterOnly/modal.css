@@ -217,7 +217,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left; /*Changement du text-align pour une meilleure visibilité*/
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -459,9 +459,11 @@ input[data-error]::after {
 .hero-img {
   grid-column: span 8;
 }
+
 .hero-img img {
   width: 100%;
   height: 100%;
+  object-fit: cover; /*Permet de gérer le responsiv sur l'image du hero car celle-ci n'était pas prise en compte*/
   display: block;
   padding: 0;
 }

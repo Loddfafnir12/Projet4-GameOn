@@ -83,6 +83,7 @@ function validate(event) {
   const birth = document.getElementById("birthdate").value;
   const radios = document.querySelectorAll('input[name="location"]');
   const cgu = document.getElementById("checkbox1");
+  const numberConc = document.getElementById("quantity");
   
   
   /// Variable pour invalidé le submit en cas de champ non conforme
