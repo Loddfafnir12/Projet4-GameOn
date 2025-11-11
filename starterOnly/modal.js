@@ -123,15 +123,7 @@ function showError(element, message) {
   formDataDiv.setAttribute('data-error', message);
   formDataDiv.setAttribute('data-error-visible', 'true');
 }
-/*
-function showError(element, message) {
-  const field = element.closest('.formData');
-  const formDataDiv = field.closest('.formData');
-  
 
-  formDataDiv.setAttribute('data-error', message);
-  formDataDiv.setAttribute('data-error-visible', 'true');
-}*/
 
 // Fonction pour masquer les erreurs
 function hideError(element) {
@@ -139,15 +131,9 @@ function hideError(element) {
   formDataDiv.removeAttribute('data-error');
   formDataDiv.setAttribute('data-error-visible', 'false');
 }
-/*
-function hideError(fieldId) {
-  const field = document.getElementById(fieldId);
-  const formDataDiv = field.closest('.formData');
-  
-  // Retire les attributs d'erreur
-  formDataDiv.removeAttribute('data-error');
-  formDataDiv.setAttribute('data-error-visible', 'false');
-}*/
+
+//Fonction pour vérifier les évenements des inputs
+
 firstname.addEventListener('input', () => checkInputValue(nameRegex, firstname, message.name));
 lastname.addEventListener('input', () => checkInputValue(nameRegex, lastname, message.name));
 email.addEventListener('input', () => checkInputValue(emailRegex, email, message.email));
@@ -157,118 +143,7 @@ radios.forEach(radio => radio.addEventListener('change', () => checkIfCitySelect
 cgu.addEventListener('input', () => checkIfConditionsAccepted(cgu,message.conditions));
 
 // Fonction qui se déclanche au clic du btn-submit
-/*
-function validate(event) {
-  // Empeche le comportement de navigateur pour la gestion des inputs
-  if (event) event.preventDefault();
 
-  // Si formSuccess n'est pas true vérifie les champs pour valider ou non l'inscription
-  if(formSuccess != true)
-  {
-  
-  //Déclaration des variables pour la gestion des champs
-  const firstname = document.getElementById("first").value.trim();
-  const lastname = document.getElementById("last").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const birth = document.getElementById("birthdate").value;
-  const nbturnament = document.getElementById("quantity").value;
-  const radios = document.querySelectorAll('input[name="location"]');
-  const cgu = document.getElementById("checkbox1");
-  
-  
-  
-  /// Variable pour invalidé le submit en cas de champ non conforme
-  let isValid = true;
-
-  // Validation du prénom
-  if (firstname.length < 2) {
-    console.log("Le prénom doit contenir au moins 2 caractères.");
-    showError(firstname, "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
-    isValid = false;
-  } else {
-    hideError("first");
-  }
-  // Validation du nom
-  if (lastname.length < 2) {
-    console.log("Le nom doit contenir au moins 2 caractères.");
-    showError("last", "Veuillez entrer 2 caractères ou plus pour le champ du nom.")
-    isValid = false;
-  }else{
-    hideError("last");
-  }
-  // Validation du mail
- 
-  if (!emailRegex.test(email)) {
-    console.log("L'email doit être rempli.");
-    showError(email, "Veuillez saisir un email valide (ex: nom@domaine.com).");
-    isValid = false;
-  }else {
-    hideError("email");
-  }
-  // Validation de la date de naissance
-  if (birth === ""){
-    console.log("Veuillez entrer une date valide.");
-    showError(birth,"Vous devez entrer votre date de naissance.");
-    isValid = false;
-  }else{
-    hideError("birthdate");
-  }
-  if (nbturnament === ""){
-    console.log("Veuillez entrer un nombre de tournoi");
-    showError(nbturnament,"Veuillez entrer un nombre de tournoi.");
-    isValid = false;
-  }
-  else{
-    hideError("quantity");
-  }
-  // Validation de la séléction de ville
-  let locationSelected = false;
-  radios.forEach((radio) => {
-    if (radio.checked) locationSelected = true;
-  });
-
-   if (!locationSelected) {
-    console.log("Vous devez sélectionner un tournoi.");
-    showError(radios, "Vous devez sélectionner un tournoi.");
-    isValid = false;
-  } else {
-    hideError("location1");
-  }
-  // Validation des CGU
-  if (!cgu.checked){
-    console.log("cgu not checked")
-    showError(cgu,"Vous devez vérifier que vous acceptez les termes et conditions.");
-    isValid = false;
-  }
-  // Si tout les champs sont valide alors on console log les variable du formulaire
-  // Puis on cache tout les elements du formulaire pour afficher un message de confirmation d'inscription
-
-  if (isValid) {
-    console.log("Formulaire valide !");
-    console.log("Prénom :", firstname);
-    console.log("Nom :", lastname);
-    console.log("Email :", email);
-    console.log("Tournoi choisi :", document.querySelector('input[name="location"]:checked').value);
-    console.log("cgu value :", cgu)
-    formData.forEach(element => {
-      element.style.display = "none";
-    });
-    modalSuccessText.style.display ="block";
-    //Change le text du bouton submit en fermer
-    modalBtnSuccess.value = "Fermer";
-    // On passe formSuccess a true pour gérer la suite de la modal
-    formSuccess = true;
-  } else {
-    console.log("⚠ Formulaire invalide, corrigez les erreurs ci-dessus.");
-    formSuccess = false;
-  }
-
-  return false; 
-}// Si le formulaire est correctement rempli et envoyé alors le btn submit ferme la modal
-if(formSuccess == true){
-  hideModal();
-}
-}*/
 function validate(event) {
     if (event) event.preventDefault();
 
@@ -306,8 +181,3 @@ function validate(event) {
 }
 };
 
-// Send Form
-//form.addEventListener('submit', e => validate(e));
-
-// Close Success Modal
-//document.querySelector('.modal_content button').addEventListener('click', () => modalSuccess.style.display = "none");
