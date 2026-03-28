@@ -29,7 +29,7 @@ const radios = document.querySelectorAll('input[name="location"]');
 const cgu = document.getElementById("checkbox1");
 
 // Variable
-const nameRegex = /^([A-Za-z|\s]{2,15})?([-]{0,1})?([A-Za-z|\s]{2,15})$/;
+const nameRegex = /^(?!.*  )([A-Za-z ]{2,15})?([-]{0,1})?([A-Za-z ]{2,15})$/;
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const regexQuantity = /^([0-9]{1,2})$/;
 
@@ -149,7 +149,7 @@ function validate(event) {
 
     if(formSuccess != true)
     {
-      // Check if all conditions are valid
+      // Check de toutes les conditions
     const isConditionsAccepted = checkIfConditionsAccepted(cgu, message.conditions);
     const isCitySelected = checkIfCitySelected(radios, message.city);
     const isUserAgeValid = checkIfUserIsYoungerThan18(birth, message.birthdate);
@@ -158,7 +158,7 @@ function validate(event) {
     const isLastNameValid = checkInputValue(nameRegex, lastname, message.name);
     const isFirstNameValid = checkInputValue(nameRegex, firstname, message.name);
 
-    // If all conditions are valid 
+    // Si toutes les conditions sont valide
     if (isConditionsAccepted && isCitySelected && isUserAgeValid && isQuantityValid && isEmailValid && isLastNameValid && isFirstNameValid) {
       formData.forEach(element => {
       element.style.display = "none";
@@ -171,11 +171,13 @@ function validate(event) {
     return false;
     
     }
+    // Return false pour quitter la boucle != true et ne pas fermer la modale
     return false;
     
-
     
     } 
+
+    // Ferme la modale si le formulaire est correctement rempli et que l'on appuye sur le btn fermer
     if(formSuccess == true){
     hideModal();
 }
